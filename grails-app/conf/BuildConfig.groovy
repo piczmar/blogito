@@ -34,3 +34,23 @@ grails.project.dependency.resolution = {
 		// <version>5.1.5</version>
 	}
 }
+
+
+	codenarc.reports = {
+		// Each report definition is of the form:
+		//	    REPORT-NAME(REPORT-TYPE) {
+		//        PROPERTY-NAME = PROPERTY-VALUE
+		//        PROPERTY-NAME = PROPERTY-VALUE
+		//    }
+
+		MyXmlReport('xml') {
+			// The report name "MyXmlReport" is user-defined; Report type is 'xml'
+			outputFile = 'target/codenarc-reports/CodeNarc-Report.xml'  	// Set the 'outputFile' property of the (XML) Report
+			title = 'Code Narc Report'             		// Set the 'title' property of the (XML) Report
+		}
+		MyHtmlReport('html') {
+			// Report type is 'html'
+			outputFile =  'target/codenarc-reports/CodeNarc-Report.html'
+			title = 'Code Narc Report'
+		}
+	}

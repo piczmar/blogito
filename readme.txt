@@ -27,4 +27,11 @@ grails test-app -coverage
 alternatively XML reports for Hudson with: 
 grails test-app -coverage -xml
 
+- install CodeNarc plugin (kind of check-style plugin ofr Grails) http://www.grails.org/plugin/codenarc/
+grails install-plugin codenarc
+
+generate check-style reports in /target/test-reports/ with command:
+grails codenarc
+
 - install functional-tests plugin
+
