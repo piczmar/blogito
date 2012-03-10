@@ -21,7 +21,7 @@
 				<g:each in="${entryInstanceList}" status="i" var="entryInstance">
 					<div class="entry">
 						<span class="entry-date">
-							${entryInstance.lastUpdated}
+							<g:longDate value="${entryInstance.lastUpdated}" />
 						</span>
 						<h2>
 							<g:link action="show" id="${entryInstance.id}">
