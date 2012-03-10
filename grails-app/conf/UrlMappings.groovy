@@ -8,6 +8,7 @@ class UrlMappings {
 		}
 
 		"/"(controller: "entry")
+		"/blog/$id"(controller:"entry", action="list")
 		"500"(view:'/error')
 	}
 }
