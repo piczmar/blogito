@@ -8,10 +8,12 @@
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
+    	<g:if test="${session.user}">
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
+        </g:if>
         <div class="body">
 	            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
 	            <g:if test="${flash.message}">
@@ -19,24 +21,13 @@
 	            </g:if>
 			<div class="list">
 				<g:each in="${entryInstanceList}" status="i" var="entryInstance">
-					<div class="entry">
-						<span class="entry-date">
-							<g:longDate value="${entryInstance.lastUpdated}" />
-						</span>
-						<h2>
-							<g:link action="show" id="${entryInstance.id}">
-								${entryInstance.title}
-							</g:link>
-						</h2>
-						<p>
-							${entryInstance.summary}
-						</p>
-					</div>
+					<g:render template="entry" bean="${entryInstance}" var="entryInstance" />
 				</g:each>
 			</div>
-			<div class="paginateButtons">
-	                <g:paginate total="${entryInstanceTotal}" />
-	        </div>
+
         </div>
+        <div class="paginateButtons">
+	        <g:paginate total="${entryInstanceTotal}" />
+	    </div>
     </body>
 </html>
