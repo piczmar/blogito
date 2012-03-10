@@ -20,6 +20,9 @@ then in STS right-click on project, choose form menu Grails Tools > Refresh Depe
 - create domain class Entry
 grails create-domain-class blogito.Entry
 
+NOTE: Interestingly if you specify properties dateCreated, lastUpdated in domain class they are managed by default by grails GORM, so whenever you modify or create entity they are populated, see this http://aftershox.com/2011/10/17/grails-datecreated-and-lastupdated-properties/
+
+
 run unit tests: grails test-app -unit
 
 - install code coverage plugin for Cobertura

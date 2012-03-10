@@ -16,9 +16,12 @@ class Entry {
 		createTimestamp()
 		modifyTimestamp()
 	}
-
+	static mapping = { sort "lastUpdated":"desc" }
+	
 	String title
 	String summary
 	Date createTimestamp
 	Date modifyTimestamp
+	Date dateCreated
+	Date lastUpdated
 }
