@@ -8,7 +8,8 @@ grails create-app blogito
 - download Hudson http://java.net/projects/hudson/
 
 - configure Hudson with Grails project according to: http://today.java.net/pub/a/today/2009/06/23/Grails-and-Continuous-Integration.html
-
+* install Grails plugin
+* install Cobertura plugin
 
 
 
@@ -19,5 +20,11 @@ run unit tests: grails test-app -unit
 
 - install code coverage plugin for Cobertura
 grails install-plugin code-coverage
+
+generate Cobertura HTML reports in /target/test-reports/cobertura with command:
+grails test-app -coverage 
+
+alternatively XML reports for Hudson with: 
+grails test-app -coverage -xml
 
 - install functional-tests plugin
