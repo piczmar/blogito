@@ -27,7 +27,7 @@
 
         </div>
         <div class="paginateButtons">
-	        <g:paginate total="${entryInstanceTotal}" />
+	        <g:paginate total="${entryInstanceTotal}" params="${flash}" />
 	    </div>
     </body>
 </html>
