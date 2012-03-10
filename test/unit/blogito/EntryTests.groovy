@@ -17,34 +17,40 @@ class EntryTests extends GrailsUnitTestCase {
 	}
 
 	void testShallNotCreateEntryWithNullTitle(){
-		entry = new Entry()
+		entry = new Entry(createTimestamp: new Date(),modifyTimestamp: new Date(), summary: "Test")
 		assertThat entry.validate(), is(false)
-		println entry.errors.getFieldError('title')
-		assertNotNull entry.errors.getFieldError('title')
+		println entry.errors
+		assertTrue("Shall not allow Entry with null title", entry.errors.hasErrors())
 	}
 
 	void testShallNotCreateEntryWithEmptyTitle(){
-		entry = new Entry(title: "")
+		entry = new Entry(title: "", createTimestamp: new Date(),modifyTimestamp: new Date(), summary: "Test")
 		assertThat entry.validate(), is(false)
-		println entry.errors.getFieldError('title')
-		assertThat(entry.errors.getFieldError('title'), not(""))
+		println entry.errors
+		assertTrue("Shall not allow Entry with blank title", entry.errors.hasErrors())
 	}
 
 	void testShallNotCreateEntryWithSummaryTooLong() {
-		entry = new Entry(title: "An Entry" )
-		def tooLongText = getLongText()
-		println(tooLongText)
-		entry.summary = tooLongText
-
+		def maxLength=1000
+		entry = new Entry(title: "An Entry" , createTimestamp: new Date(),modifyTimestamp: new Date(), summary: getLongText(maxLength))
 		assertThat entry.validate(), is(false)
-		assertThat entry.errors.getFieldError('title'), is(null)
+		println entry.errors
+		assertTrue("Shall not allow Entry with summary longer than "+maxLength, entry.errors.hasErrors())
+		assertThat entry.errors.getFieldError('summary').toString(), containsString("exceeds the maximum size")
+	}
+
+	void testShallGenerateTimestamps() {
+		entry = new Entry(title: "An Entry",summary: "Summary")
+		assertThat entry.validate(), is(true)
+		println entry.errors
+		assertTrue("Shall generate timestamps if not given for Entry", !entry.errors.hasErrors())
 	}
 
 
 
-	private String getLongText(){
+	private String getLongText(int maxLength){
 		def tooLongText = ""
-		for ( i in 0..1000 ) {
+		for ( i in 0..maxLength ) {
 			tooLongText += 'x'
 		}
 		return tooLongText
