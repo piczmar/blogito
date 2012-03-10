@@ -29,7 +29,7 @@ class EntryTests extends GrailsUnitTestCase {
 		entry.summary = tooLongText
 
 		assertThat entry.validate(), is(false)
-		assertThat entry.errors.getFieldError('title'), is(null)
+		assertThat entry.errors.getFieldError('title'), is("something")
 	}
 	
 	
