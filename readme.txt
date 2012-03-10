@@ -50,3 +50,8 @@ grails create-controller blogito.Entry
 
 - install scaffolding templates  src/templates/scaffolding
 grails install-templates
+
+==============================================================================================
+
+http://www.ibm.com/developerworks/java/library/j-grails03109/
+
