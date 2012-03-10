@@ -3,14 +3,14 @@ package blogito
 class Entry {
 
 	static constraints = {
-		title()
+		title(nullable: false, blank: false)
 		summary(maxSize:1000)
-		dateCreated()
-		lastUpdated()
+		createTimestamp()
+		modifyTimestamp()
 	}
 
 	String title
 	String summary
-	Date dateCreated
-	Date lastUpdated
+	Date createTimestamp
+	Date modifyTimestamp
 }
