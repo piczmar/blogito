@@ -1,3 +1,4 @@
+package blogito
 
 class UnderscoreCodec {
 	static encode = {target->
